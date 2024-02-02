@@ -1,0 +1,7 @@
+ai:
+  secret: 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
+  url: https://api.openai.com/v1/chat/completions
+server:
+  port: 9000
+
+

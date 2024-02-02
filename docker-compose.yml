@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+
+  Registry-server:
+    image: registry-eureka:latest
+    container_name: Registry-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - thalinet
+
+  GatewayService:
+    image: gateway:latest
+    container_name: GatewayService
+    ports:
+      - "8885:8885"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+    networks:
+      - thalinet
+
+  Confiserver:
+    image: config-server:latest
+    container_name: Confiserver
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - thalinet
+
+  NephthaliOpenAi:
+    image: nephthaliopenai:latest
+    container_name: NephthaliOpenAi
+    ports:
+      - "9000:9000"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+    networks:
+      - thalinet
+
+networks:
+  thalinet:
+    driver: bridge

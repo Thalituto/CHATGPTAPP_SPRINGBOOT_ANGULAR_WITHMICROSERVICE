@@ -1,0 +1,53 @@
+<div class="container mt-xxl-2 p-2">
+
+  
+
+  <div class="chat-container">
+    <div class="chat-header">
+      ChatGPT 
+    </div>
+    <!--  <div class="chat-body">
+      <ng-container *ngIf="chatBotResponse">
+      
+            <div class="card-body">
+              
+                <p class="card-text-user">You:<br> {{keyword}}</p>
+        
+              <p class="card-text">ChatGtpt :<br> {{ chatBotResponse.response }}</p>
+          
+              <button class="btn btn-success" (click)="downloadJavaFile()">Download</button>
+        
+          </div>
+      
+      </ng-container>
+    </div> -->
+
+<div class="row justify-content-center p-2">
+  <div class="col-md-15">
+    <div class="card w-100"> 
+      <div class="card-header"></div>
+      <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+        <div *ngFor="let r of responseHistory" class="card mb-3">
+          <div class="card-body">
+            <p class="card-text">You:<br> {{r.message}}</p>
+            <p class="card-text">ChatGPT:<br> {{r.response.response}}</p>
+            <button class="btn btn-success" (click)="downloadJavaFile()">Download</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    <div class="input-container m-3">
+      <textarea id="keyword" [(ngModel)]="keyword" class="input-field" placeholder="Type your message..." rows="1"></textarea>
+      <button (click)="getChatbot()" class="btn btn-success m-lg-1" [disabled]="keyword.trim() === ''">Send</button>
+  
+    </div>
+  
+
+  
+  
+</div>
+
